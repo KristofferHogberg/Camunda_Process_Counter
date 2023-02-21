@@ -4,19 +4,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Get Processes</title>
   </head>
   <body>
-    <fieldset>
-      <legend>Retreive Processes</legend>
-      <input type="text" id="processIdGet" placeholder="Process Id" />
-      <button type="button" id="btnGet" onclick="getAllProcesses()">
-        Get Id´s
-      </button>
-    </fieldset>
+    <form>
+      <ul>
+        <li>
+          <label for="Process Id">Process Id:</label>
+          <input type="text" id="processIdGet" name="process_id" />
+        </li>
+        <li>
+          <label for="date">Date:</label>
+          <input type="datetime" id="date_time" name="date_time" />
+        </li>
+        <li class="button">
+          <button type="button" id="btnGet" onclick="getProcessById()">
+            Get Id
+          </button>
+        </li>
+        <li class="button">
+          <button type="button" id="btnGet" onclick="getAllProcesses()">
+            Get Id´s
+          </button>
+        </li>
+      </ul>
+    </form>
 
-    <div id="dataDisplay"></div>
+    <div id="container">
+      <div id="dataDisplay"></div>
+    </div>
 
     <script src="/scripts/script.js"></script>
+    <script src="/scripts/hideborder.js"></script>
   </body>
 </html>
