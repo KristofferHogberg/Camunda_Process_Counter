@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0invkbv" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.7.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <bpmn:collaboration id="Collaboration-1">
+    <bpmn:participant id="participant-1" name="Main Process 1" processRef="main-process-1" />
+  </bpmn:collaboration>
+  <bpmn:process id="main-process-1" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Process 1 start">
+      <bpmn:outgoing>Flow_0jcoapn</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_1qs0pxr" name="Process 1 has ended">
+      <bpmn:incoming>Flow_03f798p</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="activity-1" name="Do Someyhing">
+      <bpmn:incoming>Flow_0jcoapn</bpmn:incoming>
+      <bpmn:outgoing>Flow_05zmoum</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:callActivity id="call-another-process" name="Call another main process 2">
+      <bpmn:extensionElements>
+        <zeebe:calledElement processId="main-process-2" propagateAllChildVariables="false" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_05zmoum</bpmn:incoming>
+      <bpmn:outgoing>Flow_03f798p</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:sequenceFlow id="Flow_0jcoapn" sourceRef="StartEvent_1" targetRef="activity-1" />
+    <bpmn:sequenceFlow id="Flow_03f798p" sourceRef="call-another-process" targetRef="Event_1qs0pxr" />
+    <bpmn:sequenceFlow id="Flow_05zmoum" sourceRef="activity-1" targetRef="call-another-process" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration-1">
+      <bpmndi:BPMNShape id="Participant_07tph86_di" bpmnElement="participant-1" isHorizontal="true">
+        <dc:Bounds x="160" y="90" width="600" height="250" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="229" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="210" y="225" width="75" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1qs0pxr_di" bpmnElement="Event_1qs0pxr">
+        <dc:Bounds x="622" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="605" y="225" width="71" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ddpm7e_di" bpmnElement="activity-1">
+        <dc:Bounds x="320" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1u3vub0_di" bpmnElement="call-another-process">
+        <dc:Bounds x="460" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0jcoapn_di" bpmnElement="Flow_0jcoapn">
+        <di:waypoint x="265" y="200" />
+        <di:waypoint x="320" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_03f798p_di" bpmnElement="Flow_03f798p">
+        <di:waypoint x="560" y="200" />
+        <di:waypoint x="622" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05zmoum_di" bpmnElement="Flow_05zmoum">
+        <di:waypoint x="420" y="200" />
+        <di:waypoint x="460" y="200" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
