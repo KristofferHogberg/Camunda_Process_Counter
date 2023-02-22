@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "zeebe-node": "^8.1.5"
+  }
+}
