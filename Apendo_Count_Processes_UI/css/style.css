@@ -138,11 +138,11 @@ textarea {
   font-weight: 700;
   box-shadow: 1px 4px 10px 1px #aaa;
 
-  background: #207cca; /* Old browsers */
+  background: #a2cef5; /* Old browsers */
   background: -moz-linear-gradient(
     left,
     #207cca 0%,
-    #9f58a3 100%
+    #c8b7c9 100%
   ); /* FF3.6-15 */
   background: -webkit-linear-gradient(
     left,
@@ -155,4 +155,84 @@ textarea {
     #9f58a3 100%
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207cca', endColorstr='#9f58a3',GradientType=1 ); /* IE6-9 */
+}
+
+nav {
+  display: flex;
+
+  justify-content: space-around;
+
+  align-items: center;
+
+  min-height: 8vh;
+
+  background-color: rgb(124, 202, 202);
+
+  font-family: 'Montserrat', sans-serif;
+}
+
+.heading {
+  color: white;
+
+  text-transform: uppercase;
+
+  letter-spacing: 5px;
+
+  font-size: 20px;
+}
+
+.nav-links {
+  display: flex;
+
+  justify-content: space-around;
+
+  width: 30%;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+.nav-links a {
+  color: white;
+
+  text-decoration: none;
+
+  letter-spacing: 3px;
+
+  font-weight: bold;
+
+  font-size: 14px;
+
+  padding: 14px 16px;
+}
+
+.nav-links a:hover:not(.active) {
+  background-color: rgb(162, 244, 255);
+}
+
+.nav-links li a.active {
+  background-color: #a3f0f0;
+}
+
+#loading {
+  width: 2rem;
+  height: 2rem;
+  border: 5px solid #f3f3f3;
+  border-top: 6px solid #9c41f2;
+  border-radius: 100%;
+  margin: auto;
+  visibility: hidden;
+  animation: spin 1s infinite linear;
+}
+#loading.display {
+  visibility: visible;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

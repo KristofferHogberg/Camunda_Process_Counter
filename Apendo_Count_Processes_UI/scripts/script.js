@@ -47,6 +47,8 @@ async function handleSubmit(event) {
   let data;
   let count;
 
+  displayLoading();
+
   if (processId) {
     data = await getProcessById(processId);
   } else {

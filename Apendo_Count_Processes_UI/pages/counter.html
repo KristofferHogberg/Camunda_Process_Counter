@@ -8,23 +8,36 @@
     <title>Count Processes</title>
   </head>
   <body>
-    <form
-      id="process-form"
-      method="POST"
-      action="/submit-form"
-      onsubmit="handleSubmit(event)"
-    >
-      <label for="process-id">Process id:</label>
-      <input type="string" id="processIdGet" name="get_process" />
-      <label for="start-date">Start date:</label>
-      <input type="date" id="start-date" name="start_date" />
-      <input type="time" id="start-time" name="start_time" /><br /><br />
-      <label for="end-date">End date:</label>
-      <input type="date" id="end-date" name="end_date" />
-      <input type="time" id="end-time" name="end_time" /><br /><br />
+    <nav>
+      <div class="heading">
+        <h4>Navigation Bar</h4>
+      </div>
 
-      <button type="submit">Get Processes</button>
-    </form>
+      <ul class="nav-links">
+        <li><a class="active" href="/index.html">Home</a></li>
+      </ul>
+    </nav>
+    <div class="container-form">
+      <form
+        id="process-form"
+        method="POST"
+        action="/submit-form"
+        onsubmit="handleSubmit(event)"
+      >
+        <label for="process-id">Process id:</label>
+        <input type="string" id="processIdGet" name="get_process" />
+        <label for="start-date">Start date:</label>
+        <input type="date" id="start-date" name="start_date" />
+        <input type="time" id="start-time" name="start_time" /><br /><br />
+        <label for="end-date">End date:</label>
+        <input type="date" id="end-date" name="end_date" />
+        <input type="time" id="end-time" name="end_time" /><br /><br />
+
+        <button type="submit" id="submitInput">Get Processes</button>
+      </form>
+      <div id="loading"></div>
+      <h1 id="showOutput"></h1>
+    </div>
 
     <div id="container">
       <div id="dataDisplay"></div>
@@ -32,5 +45,6 @@
 
     <script src="/scripts/script.js"></script>
     <script src="/scripts/hideborder.js"></script>
+    <script src="/scripts/loader.js"></script>
   </body>
 </html>
