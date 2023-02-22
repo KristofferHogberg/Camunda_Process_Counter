@@ -1,10 +1,10 @@
 async function getProcessById() {
   const processId = document.getElementById('processIdGet').value;
 
-  if (!processId) {
-    alert('Please input a process id.');
-    return;
-  }
+  // if (!processId) {
+  //   alert('Please input a process id.');
+  //   return;
+  // }
 
   const endpoint = new URL(
     `http://localhost:8080/engine-rest/history/process-instance?processDefinitionKey=${processId}`
@@ -61,6 +61,11 @@ async function getAllProcesses() {
 
 function handleSubmit(event) {
   event.preventDefault();
-  console.log('Form submitted!');
-  getAllProcesses();
+  const processId = document.getElementById('processIdGet').value;
+
+  if (!processId) {
+    getAllProcesses();
+  } else {
+    getProcessById();
+  }
 }

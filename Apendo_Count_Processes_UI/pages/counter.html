@@ -8,20 +8,6 @@
     <title>Count Processes</title>
   </head>
   <body>
-    <!-- <form id="myForm" onsubmit="handleSubmit(event)">
-      <label for="process-id">Process id:</label>
-      <input type="string" id="start-date" name="start_date" />
-      <label for="start-date">Start date:</label>
-      <input type="date" id="start-date" name="start_date" />
-      <input type="time" id="start-time" name="start_time" /><br /><br />
-
-      <label for="end-date">End date:</label>
-      <input type="date" id="end-date" name="end_date" />
-      <input type="time" id="end-time" name="end_time" /><br /><br />
-
-      <button type="submit">Submit</button>
-    </form> -->
-
     <form
       id="process-form"
       method="POST"
@@ -29,11 +15,10 @@
       onsubmit="handleSubmit(event)"
     >
       <label for="process-id">Process id:</label>
-      <input type="string" id="start-date" name="start_date" />
+      <input type="string" id="processIdGet" name="get_process" />
       <label for="start-date">Start date:</label>
       <input type="date" id="start-date" name="start_date" />
       <input type="time" id="start-time" name="start_time" /><br /><br />
-
       <label for="end-date">End date:</label>
       <input type="date" id="end-date" name="end_date" />
       <input type="time" id="end-time" name="end_time" /><br /><br />
