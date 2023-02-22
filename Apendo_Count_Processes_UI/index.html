@@ -4,19 +4,50 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Get Processes</title>
   </head>
   <body>
-    <fieldset>
-      <legend>Retreive Processes</legend>
-      <input type="text" id="processIdGet" placeholder="Process Id" />
-      <button type="button" id="btnGet" onclick="getAllProcesses()">
-        Get Id´s
-      </button>
-    </fieldset>
+    <!-- <form>
+      <ul>
+        <li>
+          <label for="Process Id">Process Id:</label>
+          <input type="text" id="processIdGet" name="process_id" />
+        </li>
+        <li>
+          <label for="date">Date:</label>
+          <input type="datetime" id="date_time" name="date_time" />
+        </li>
+        <li class="button">
+          <button type="button" id="btnGet" onclick="getProcessById()">
+            Get Id
+          </button>
+        </li>
+        <li class="button">
+          <button type="button" id="btnGet" onclick="getAllProcesses()">
+            Get Id´s
+          </button>
+        </li>
+      </ul>
+    </form> -->
 
-    <div id="dataDisplay"></div>
+    <div id="container">
+      <a href="http://127.0.0.1:5500/pages/counter.html">Go to Another Page</a>
+    </div>
+
+    <!-- <form id="myForm">
+      <label for="start-date">Start date:</label>
+      <input type="text" id="start-date" name="start_date" /><br /><br />
+      <label for="start-time">Start time:</label>
+      <input type="time" id="start-time" name="start_time" /><br /><br />
+      <label for="end-date">End date:</label>
+      <input type="text" id="end-date" name="end_date" /><br /><br />
+      <label for="end-time">End time:</label>
+      <input type="time" id="end-time" name="end_time" /><br /><br />
+      <button type="submit">Submit</button>
+    </form> -->
 
     <script src="/scripts/script.js"></script>
+    <script src="/scripts/hideborder.js"></script>
   </body>
 </html>
