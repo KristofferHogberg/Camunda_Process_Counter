@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Count Processes</title>
+  </head>
+  <body>
+    <!-- <form id="myForm" onsubmit="handleSubmit(event)">
+      <label for="process-id">Process id:</label>
+      <input type="string" id="start-date" name="start_date" />
+      <label for="start-date">Start date:</label>
+      <input type="date" id="start-date" name="start_date" />
+      <input type="time" id="start-time" name="start_time" /><br /><br />
+
+      <label for="end-date">End date:</label>
+      <input type="date" id="end-date" name="end_date" />
+      <input type="time" id="end-time" name="end_time" /><br /><br />
+
+      <button type="submit">Submit</button>
+    </form> -->
+
+    <form
+      id="process-form"
+      method="POST"
+      action="/submit-form"
+      onsubmit="handleSubmit(event)"
+    >
+      <label for="process-id">Process id:</label>
+      <input type="string" id="start-date" name="start_date" />
+      <label for="start-date">Start date:</label>
+      <input type="date" id="start-date" name="start_date" />
+      <input type="time" id="start-time" name="start_time" /><br /><br />
+
+      <label for="end-date">End date:</label>
+      <input type="date" id="end-date" name="end_date" />
+      <input type="time" id="end-time" name="end_time" /><br /><br />
+
+      <button type="submit">Get Processes</button>
+    </form>
+
+    <div id="container">
+      <div id="dataDisplay"></div>
+    </div>
+
+    <script src="/scripts/script.js"></script>
+    <script src="/scripts/hideborder.js"></script>
+  </body>
+</html>
