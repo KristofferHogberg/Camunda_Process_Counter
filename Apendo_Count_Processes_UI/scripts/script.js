@@ -7,8 +7,6 @@ async function getProcessCount() {
   body.processDefinitionKey = processId;
   body = JSON.stringify(body);
 
-  console.log('KOLLA: ' + ' ' + body);
-
   endpoint = `http://localhost:8080/engine-rest/history/process-instance/count`;
 
   const options = {
@@ -39,6 +37,17 @@ async function getAllProcesses() {
   );
   // endpoint.searchParams.set('token', 'MY_TOKEN_HERE');
   const response = await fetch(endpoint);
+  clearInterval;
+  return await response.json();
+}
+
+async function countAllProcesses() {
+  const endpoint = new URL(
+    `http://localhost:8080/engine-rest/history/process-instance/count`
+  );
+  // endpoint.searchParams.set('token', 'MY_TOKEN_HERE');
+  const response = await fetch(endpoint);
+
   return await response.json();
 }
 
@@ -57,12 +66,13 @@ const handleSubmit = async (event) => {
 
   if (processId) {
     data = await getProcessById(processId);
+    const countResponse = await getProcessCount();
+    count = countResponse.count;
   } else {
     data = await getAllProcesses();
+    const countResponse = await countAllProcesses();
+    count = countResponse.count;
   }
-
-  const countResponse = await getProcessCount();
-  count = countResponse.count;
 
   dataDisplayElement = document.getElementById('dataDisplay');
   dataDisplayElement.innerHTML =
