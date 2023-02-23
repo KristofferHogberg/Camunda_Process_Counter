@@ -1,20 +1,23 @@
 async function getProcessCount() {
   const processId = document.getElementById('processIdGet').value;
   let endpoint;
+  let body = {};
 
-  if (processId) {
-    const process = await getProcessById(processId);
+  body = await getDateAndTime();
+  body.processDefinitionKey = processId;
+  body = JSON.stringify(body);
 
-    console.log(process.length);
-    return { count: process.length };
-  } else {
-    endpoint = new URL(
-      // `http://localhost:8080/engine-rest/history/activity-instance/count`
-      `http://localhost:8080/engine-rest/history/process-instance/count`
-    );
-  }
-  // endpoint.searchParams.set('token', 'MY_TOKEN_HERE');
-  const response = await fetch(endpoint);
+  console.log('KOLLA: ' + ' ' + body);
+
+  endpoint = `http://localhost:8080/engine-rest/history/process-instance/count`;
+
+  const options = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: body,
+  };
+
+  const response = await fetch(endpoint, options);
   const data = await response.json();
 
   return data;
@@ -39,8 +42,10 @@ async function getAllProcesses() {
   return await response.json();
 }
 
-async function handleSubmit(event) {
+const handleSubmit = async (event) => {
+  document.addEventListener('DOMContentLoaded', () => {});
   event.preventDefault();
+
   const processId = document.getElementById('processIdGet').value;
   let dataDisplayElement = document.getElementById('dataDisplay');
 
@@ -67,27 +72,4 @@ async function handleSubmit(event) {
     '<pre><code class="json">' +
     JSON.stringify(data, null, 2) +
     '</code></pre>';
-}
-
-async function getDateAndTime() {
-  const form = document.querySelector('#process-form');
-  const startDateInput = form.querySelector('#start-date');
-  const startTimeInput = form.querySelector('#start-time');
-  const endDateInput = form.querySelector('#end-date');
-  const endTimeInput = form.querySelector('#end-time');
-
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const startDate = startDateInput.value;
-    const startTime = startTimeInput.value;
-    const endDate = endDateInput.value;
-    const endTime = endTimeInput.value;
-
-    const body = {
-      start: new Date(`${startDate}T${startTime}`).toISOString(),
-      end: new Date(`${endDate}T${endTime}`).toISOString(),
-    };
-    console.log('THIS IS THE DATE BODY: ' + ' ' + JSON.stringify(body));
-  });
-}
+};
