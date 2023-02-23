@@ -1,9 +1,9 @@
-const dataDisplayElement = document.getElementById('dataDisplay');
-if (data) {
-  dataDisplayElement.innerHTML =
-    '<pre><code class="json">' +
-    JSON.stringify(data, null, 2) +
-    '</code></pre>';
-} else {
-  dataDisplayElement.innerHTML = '';
-}
+// const dataDisplayElement = document.getElementById('dataDisplay');
+// if (dataDisplayElement) {
+//   dataDisplayElement.innerHTML =
+//     '<pre><code class="json">' +
+//     JSON.stringify(dataDisplayElement, null, 2) +
+//     '</code></pre>';
+// } else {
+//   dataDisplayElement.innerHTML = '';
+// }
