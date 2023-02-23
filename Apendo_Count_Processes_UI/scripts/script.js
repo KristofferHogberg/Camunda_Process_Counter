@@ -48,6 +48,7 @@ async function handleSubmit(event) {
   let count;
 
   displayLoading();
+  await getDateAndTime();
 
   if (processId) {
     data = await getProcessById(processId);
@@ -55,7 +56,6 @@ async function handleSubmit(event) {
     data = await getAllProcesses();
   }
 
-  count = await getProcessCount();
   const countResponse = await getProcessCount();
   count = countResponse.count;
 
@@ -68,3 +68,47 @@ async function handleSubmit(event) {
     JSON.stringify(data, null, 2) +
     '</code></pre>';
 }
+
+async function getDateAndTime() {
+  const form = document.querySelector('#process-form');
+  const startDateInput = form.querySelector('#start-date');
+  const startTimeInput = form.querySelector('#start-time');
+  const endDateInput = form.querySelector('#end-date');
+  const endTimeInput = form.querySelector('#end-time');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const startDate = startDateInput.value;
+    const startTime = startTimeInput.value;
+    const endDate = endDateInput.value;
+    const endTime = endTimeInput.value;
+
+    const body = {
+      start: new Date(`${startDate}T${startTime}`).toISOString(),
+      end: new Date(`${endDate}T${endTime}`).toISOString(),
+    };
+    console.log('THIS IS THE DATE BODY: ' + ' ' + JSON.stringify(body));
+  });
+}
+
+// async function getDateAndTime() {
+//   const form = document.querySelector('#process-form');
+//   const startDateInput = form.querySelector('#start-date');
+//   const startTimeInput = form.querySelector('#start-time');
+//   const endDateInput = form.querySelector('#end-date');
+//   const endTimeInput = form.querySelector('#end-time');
+
+//   const startDate = startDateInput.value;
+//   const startTime = startTimeInput.value;
+//   const endDate = endDateInput.value;
+//   const endTime = endTimeInput.value;
+
+//   const body = {
+//     start: new Date(`${startDate}T${startTime}`).toISOString(),
+//     end: new Date(`${endDate}T${endTime}`).toISOString(),
+//   };
+//   console.log('NEW DAT: ' + ' ' + body);
+
+//   return body;
+// }
