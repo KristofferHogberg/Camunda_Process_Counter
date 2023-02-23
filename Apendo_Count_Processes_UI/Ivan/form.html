@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Camunda API-formulär</title>
+</head>
+
+<body>
+    <form onsubmit="event.preventDefault(); submitForm();">
+        <label for="processInstanceId">Processinstans ID:</label>
+        <input type="text" id="processInstanceId" name="processInstanceId"><br><br>
+        <button type="submit">Hämta uppgifter</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script src="script2.js"> </script>
+</body>
+
+</html>
