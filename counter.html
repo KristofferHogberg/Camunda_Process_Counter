@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Camunda API-formulär</title>
+</head>
+
+<body>
+    <div class="heading">
+        <h3>Main Process Counter</h3>
+      </div>
+    <div  class="container-form">
+    <form onsubmit="event.preventDefault(); submitForm();">
+        <label for="processInstanceId">Processinstans ID:</label>
+        <input type="text" id="processInstanceId" name="processInstanceId"><br><br>
+        <label for="start-date">Start date:</label>
+        <input type="date" id="start-date" name="start_date" />
+        <input type="time" id="start-time" name="start_time" /><br /><br />
+        <label for="end-date">End date:</label>
+        <input type="date" id="end-date" name="end_date" />
+        <input type="time" id="end-time" name="end_time" /><br /><br />
+
+        <button type="submit">Hämta uppgifter</button>
+    </form>
+</div>
+
+    <div id="result"></div>
+
+    <script src="script.js"> </script>
+    <script src="date.js"> </script>
+</body>
+
+</html>
