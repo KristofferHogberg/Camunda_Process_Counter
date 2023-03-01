@@ -64,15 +64,32 @@ const handleSubmit = async (event) => {
   displayLoading();
   await getDateAndTime();
 
+  // if (processId) {
+  //   data = await getProcessById(processId);
+  //   const countResponse = await getProcessCount();
+  //   count = countResponse.count;
+  // } else {
+  //   data = await getAllProcesses();
+  //   const countResponse = await countAllProcesses();
+  //   count = countResponse.count;
+  // }
+
   if (processId) {
-    data = await getProcessById(processId);
-    const countResponse = await getProcessCount();
-    count = countResponse.count;
+    const processIds = processId.split(',');
+    const data = [];
+
+    for (let i = 0; i < processIds.length; i++) {
+      const processData = await getProcessById(processIds[i]);
+      data.push(processData);
+    }
+
+    count = processIds.length;
   } else {
     data = await getAllProcesses();
     const countResponse = await countAllProcesses();
     count = countResponse.count;
   }
+
 
   dataDisplayElement = document.getElementById('dataDisplay');
   dataDisplayElement.innerHTML =

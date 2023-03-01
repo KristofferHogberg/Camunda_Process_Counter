@@ -14,7 +14,6 @@ const getDateAndTime = async () => {
   if (endDateInput.value && endTimeInput.value) {
     body.finishedBefore = formatDate(endDateInput.value, endTimeInput.value);
   }
-  console.log('THIS IS THE DATE BODY: ' + ' ' + JSON.stringify(body));
   return body;
 };
 
