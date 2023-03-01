@@ -77,10 +77,17 @@ const handleSubmit = async (event) => {
   if (processId) {
     const processIds = processId.split(',');
     const data = [];
+    let processData;
 
     for (let i = 0; i < processIds.length; i++) {
-      const processData = await getProcessById(processIds[i]);
+
+      processData = await getProcessById(processIds[i]);
       data.push(processData);
+      // console.log("KOLAA" + " " + data)
+    }
+
+    for (let i = 0; i < data.length; i++) {
+      console.log(data[i]);
     }
 
     count = processIds.length;
@@ -89,7 +96,6 @@ const handleSubmit = async (event) => {
     const countResponse = await countAllProcesses();
     count = countResponse.count;
   }
-
 
   dataDisplayElement = document.getElementById('dataDisplay');
   dataDisplayElement.innerHTML =
