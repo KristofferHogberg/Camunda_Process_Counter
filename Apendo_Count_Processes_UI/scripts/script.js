@@ -1,5 +1,5 @@
-async function getProcessCount() {
-  const processId = document.getElementById('processIdGet').value;
+async function getProcessCount(processId) {
+  // processId = document.getElementById('processIdGet').value;
   let endpoint;
   let body = {};
 
@@ -59,38 +59,25 @@ const handleSubmit = async (event) => {
   let dataDisplayElement = document.getElementById('dataDisplay');
 
   let data;
-  let count;
+  let count = 0;
 
   displayLoading();
   await getDateAndTime();
 
-  // if (processId) {
-  //   data = await getProcessById(processId);
-  //   const countResponse = await getProcessCount();
-  //   count = countResponse.count;
-  // } else {
-  //   data = await getAllProcesses();
-  //   const countResponse = await countAllProcesses();
-  //   count = countResponse.count;
-  // }
-
   if (processId) {
     const processIds = processId.split(',');
-    const data = [];
-    let processData;
+    console.log("Process Id's: " + processIds)
 
     for (let i = 0; i < processIds.length; i++) {
 
-      processData = await getProcessById(processIds[i]);
-      data.push(processData);
-      // console.log("KOLAA" + " " + data)
+      console.log("id:n. " + processIds[i])
+      data = await getProcessById(processIds[i]);
+
+      const countResponse = await getProcessCount(processIds[i]);
+      console.log("CountResp: " + countResponse.count)
+      count += countResponse.count;
     }
 
-    for (let i = 0; i < data.length; i++) {
-      console.log(data[i]);
-    }
-
-    count = processIds.length;
   } else {
     data = await getAllProcesses();
     const countResponse = await countAllProcesses();
@@ -99,10 +86,11 @@ const handleSubmit = async (event) => {
 
   dataDisplayElement = document.getElementById('dataDisplay');
   dataDisplayElement.innerHTML =
-    '<p>Process count: ' +
-    count +
-    '</p>' +
-    '<pre><code class="json">' +
-    JSON.stringify(data, null, 2) +
-    '</code></pre>';
+      '<p>Process count: ' +
+      count +
+      '</p>' +
+      '<pre><code class="json">' +
+      JSON.stringify(data, null, 2) +
+      '</code></pre>';
 };
+
