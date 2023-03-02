@@ -1,26 +1,43 @@
 function submitForm() {
     const processInstanceId = document.getElementById("processInstanceId").value;
-    const apiUrl = `https://84f8-83-233-216-66.eu.ngrok.io/_count`;
+    const startDate = document.getElementById("startDate").value;
+    const startTime = document.getElementById("startTime").value;
+    const endDate = document.getElementById("endDate").value;
+    const endTime = document.getElementById("endTime").value;
 
-    function requestBody(id) {
-        console.log(id);
+    const startTimestamp = new Date(startDate + " " + startTime).toISOString();
+    const endTimestamp = new Date(endDate + " " + endTime).toISOString();
+
+    const apiUrl = `https://5961-193-14-79-226.eu.ngrok.io/_count`;
+
+    function requestBody(id, start, end) {
+        console.log(id, start, end);
         let payload = {
             "query": {
-                "bool": {
-                    "must": [
-                        {
-                            "regexp": {
-                                "bpmnProcessId": id
-                            }
-                        },
-                        {
-                            "wildcard": {
-                                "_index": "operate-list-view-8.1.0_"
-                            }
-                        }
-                    ]
-                }
-            }
+                        "bool": {
+                            "must": [
+                                {
+                                    "regexp": {
+                                        "bpmnProcessId": "Process_.*"
+                                    }
+                                },
+                                {
+                                    "wildcard": {
+                                        "_index": "operate-list-view-8.1.0_"
+                                    }
+                                },
+                                {
+                                    "range": {
+                                        "startDate": {
+                                            "gte": "2023-03-01",
+                                            "lte": "2024-01-01T00:00:00.000+0000",
+                                            "format": "date_time || date"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
         };
         return JSON.stringify(payload);
     }
@@ -32,7 +49,7 @@ function submitForm() {
     document.getElementById("result").innerHTML = "";
     const requests = processInstanceIds.map((processInstanceId) => {
         const url = apiUrl;
-        const body = requestBody(processInstanceId);
+        const body = requestBody(processInstanceId, startTimestamp, endTimestamp);
         console.log("body " + body);
         return fetch(url, {
             method: 'POST',
