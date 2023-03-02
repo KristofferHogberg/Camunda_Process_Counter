@@ -39,12 +39,19 @@
       <h1 id="showOutput"></h1>
     </div>
 
-    <div id="container">
-      <div id="dataDisplay"></div>
+    <div class="container-form-8">
+      <form onsubmit="event.preventDefault(); submitForm();">
+        <label for="processInstanceId">Processinstans ID:</label>
+        <input type="text" id="processInstanceId" name="processInstanceId"><br><br>
+        <button type="submit">Hämta uppgifter</button>
+      </form>
+
+      <div id="result"></div>
     </div>
 
     <script src="../scripts/script.js"></script>
     <script src="../scripts/load_animation.js"></script>
     <script src="../scripts/get_date_time.js"></script>
+    <script src="../scripts/script_8.js"></script>
   </body>
 </html>

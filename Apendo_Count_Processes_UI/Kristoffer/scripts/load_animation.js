@@ -14,3 +14,8 @@ function displayLoading() {
 function hideLoading() {
   loader.classList.remove('display');
 }
+
+
+$('.message a').click(function(){
+  $('container-form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
