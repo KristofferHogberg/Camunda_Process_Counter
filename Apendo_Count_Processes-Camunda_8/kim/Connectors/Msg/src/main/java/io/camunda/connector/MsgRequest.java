@@ -1,13 +1,8 @@
 package io.camunda.connector;
 
-import io.camunda.connector.api.annotation.Secret;
 import lombok.Data;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
-import java.util.Objects;
 
 @Data
 public class MsgRequest {
@@ -20,4 +15,6 @@ public class MsgRequest {
   private String food;
   @NotEmpty
   private String correlationKey;
+  @NotEmpty
+  private String message;
 }

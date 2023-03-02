@@ -1,9 +1,9 @@
 package io.camunda.connector;
 
 import io.camunda.connector.api.annotation.Secret;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
-
 import java.util.Objects;
 
 public class Authentication {
