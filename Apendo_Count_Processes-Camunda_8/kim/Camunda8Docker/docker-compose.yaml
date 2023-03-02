@@ -100,8 +100,7 @@ services:
       - CAMUNDA_OPERATE_CLIENT_CLIENT-SECRET=c0nn3ct0rsAr3Aw3s0me
       - CAMUNDA_OPERATE_CLIENT_KEYCLOAK-REALM=camunda-platform
       - CAMUNDA_OPERATE_CLIENT_URL=http://operate:8080
-    volumes:
-      - C:\Connectors\Msg-1-with-dependencies.jar:/opt/app/Msg.jar
+    
     env_file: connector-secrets.txt
     networks:
       - camunda-platform
