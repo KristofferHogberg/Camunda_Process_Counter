@@ -16,6 +16,3 @@ function hideLoading() {
 }
 
 
-$('.message a').click(function(){
-  $('container-form').animate({height: "toggle", opacity: "toggle"}, "slow");
-});

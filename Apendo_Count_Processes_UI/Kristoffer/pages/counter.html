@@ -15,8 +15,13 @@
 
       <ul class="nav-links">
         <li><a class="active" href="../index.html">Home</a></li>
+        <li><a class="active" href="../pages/counter_8.html">Camunda 8</a></li>
       </ul>
     </nav>
+
+    <div class="home">
+      <h1>Camunda 7</h1>
+    </div>
     <div class="container-form">
       <form
         id="process-form"
@@ -24,7 +29,7 @@
         action="/submit-form"
         onsubmit="handleSubmit(event)"
       >
-        <label for="processIdGet">Process id:</label>
+        <label for="processIdGet">Process id's:</label>
         <input type="string" id="processIdGet" name="get_process" />
         <label for="start-date">Started after:</label>
         <input type="date" id="start-date" name="start_date" />
@@ -39,14 +44,8 @@
       <h1 id="showOutput"></h1>
     </div>
 
-    <div class="container-form-8">
-      <form onsubmit="event.preventDefault(); submitForm();">
-        <label for="processInstanceId">Processinstans ID:</label>
-        <input type="text" id="processInstanceId" name="processInstanceId"><br><br>
-        <button type="submit">Hämta uppgifter</button>
-      </form>
-
-      <div id="result"></div>
+    <div id="container">
+      <div id="dataDisplay"></div>
     </div>
 
     <script src="../scripts/script.js"></script>
