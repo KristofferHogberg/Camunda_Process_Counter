@@ -105,7 +105,8 @@ public final class JobWorkerCreator {
                             zeebeClient.newPublishMessageCommand()
                         .messageName("FirstMessage")
                         .correlationKey(String.valueOf(job.getProcessInstanceKey()))
-                        .variables(Map.of("time", "PT5S"))
+                        .variables(Map.of("time", job.getVariablesAsMap().get("time").toString()))
+                        .variables(job.getVariablesAsMap())
                         .send()
                         .join();
             JobWorkerCreator.count++;
