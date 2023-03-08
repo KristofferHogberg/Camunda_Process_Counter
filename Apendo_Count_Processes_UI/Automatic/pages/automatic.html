@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Count Processes</title>
+  </head>
+  <body>
+    <nav>
+      <div class="heading">
+        <h4>Process management</h4>
+      </div>
+
+      <ul class="nav-links">
+        <li><a class="active" href="../index.html">Home</a></li>
+      </ul>
+    </nav>
+    <div class="container-form">
+      <form
+        id="process-form"
+      >
+        <label for="start-date">Started after:</label>
+        <input type="date" id="start-date" name="start_date" />
+        <input type="time" id="start-time" name="start_time" /><br /><br />
+        <label for="end-date">Finished before:</label>
+        <input type="date" id="end-date" name="end_date" />
+        <input type="time" id="end-time" name="end_time" /><br /><br />
+
+        <button type="submit" id="submitInput">Get Processes</button>
+      </form>
+      <div id="loading"></div>
+      <h1 id="showOutput"></h1>
+    </div>
+
+    <div id="container">
+      <div id="dataDisplay"></div>
+    </div>
+
+    <script src="../scripts/get_processes.js"></script>
+  </body>
+</html>
