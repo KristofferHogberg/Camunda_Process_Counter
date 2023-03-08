@@ -59,9 +59,26 @@ textarea {
   height: 5em;
 }
 
-.button {
-  /* Align buttons with the text fields */
-  padding-left: 90px; /* same size as the label elements */
+@keyframes fadeIn {
+  0% { opacity: 1;}
+  50% { opacity: 0.45; }
+  100% {opacity: 0.85;}
+}
+
+button {
+  opacity: 85%;
+  user-select: none;
+}
+button:active {
+  vertical-align: top;
+  padding: 8px 13px 6px;
+}
+button:not(:active):focus {
+  /* now keep red background for 1s */
+  animation: fadeIn 1s;
+}
+button:hover {
+  opacity: 100%;
 }
 
 #container {

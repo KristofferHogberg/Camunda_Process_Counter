@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/automatic.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Count Processes</title>
   </head>
@@ -17,16 +18,24 @@
         <li><a class="active" href="../index.html">Home</a></li>
       </ul>
     </nav>
+    <div id="foundProcesses">
+      <h4>Found processes</h4>
+
+    </div>
     <div class="container-form">
-      <form
-        id="process-form"
-      >
-        <label for="start-date">Started after:</label>
-        <input type="date" id="start-date" name="start_date" />
-        <input type="time" id="start-time" name="start_time" /><br /><br />
-        <label for="end-date">Finished before:</label>
-        <input type="date" id="end-date" name="end_date" />
-        <input type="time" id="end-time" name="end_time" /><br /><br />
+      <form id="process-form">
+
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" value="1970-01-01"><br><br>
+
+        <label for="startTime">Start Time:</label>
+        <input type="time" id="startTime" name="startTime" value="00:00"><br><br>
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" value="2170-01-01"><br><br>
+
+        <label for="endTime">End Time:</label>
+        <input type="time" id="endTime" name="endTime" value="23:59"><br><br>
 
         <button type="submit" id="submitInput">Get Processes</button>
       </form>
@@ -39,5 +48,7 @@
     </div>
 
     <script src="../scripts/get_processes.js"></script>
+    <script src="../scripts/count_processes.js"></script>
+    <script src="../scripts/payload.js"></script>
   </body>
 </html>
