@@ -1,3 +1,12 @@
+.home {
+  text-align: center;
+  color:cadetblue;
+  font-family: "Century Gothic";
+  padding: 2rem;
+  font-size: large;
+}
+
+
 .container-form {
   margin-top: 4em;
   align-items: center;
@@ -81,6 +90,20 @@ textarea {
 #dataDisplay:not(:empty) {
   border: 1px solid #ccc;
 }
+
+/*#version {*/
+/*  overflow: auto;*/
+/*  margin: 1em auto;*/
+/*  padding: 1em;*/
+/*  border-radius: 1em;*/
+/*  text-align: start;*/
+/*  display: inline-block;*/
+/*  min-width: 20em;*/
+/*}*/
+
+/*#version:not(:empty) {*/
+/*  border: 1px solid #ccc;*/
+/*}*/
 
 #process-form {
   width: 280px;

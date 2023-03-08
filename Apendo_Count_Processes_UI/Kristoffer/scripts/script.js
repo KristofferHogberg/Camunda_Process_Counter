@@ -37,7 +37,6 @@ async function getAllProcesses() {
     );
     // endpoint.searchParams.set('token', 'MY_TOKEN_HERE');
     const response = await fetch(endpoint);
-    clearInterval;
     return await response.json();
 }
 
@@ -63,6 +62,7 @@ const handleSubmit = async (event) => {
 
     displayLoading();
     await getDateAndTime();
+    await displayCamundaVersion();
 
     if (processId) {
 
@@ -94,5 +94,24 @@ const printDisplayElements = async (data, count) => {
         '</code></pre>';
 }
 
+async function getCamundaVersion() {
+    const endpoint = new URL(
+        `http://localhost:8080/engine-rest/version`
+    );
+    // endpoint.searchParams.set('token', 'MY_TOKEN_HERE');
+    const response = await fetch(endpoint);
+    const data = await response.json();
 
+    return data;
+}
 
+async function displayCamundaVersion() {
+    const versionElement = document.getElementById('version');
+    try {
+        const version = await getCamundaVersion();
+        versionElement.innerText = `Current Camunda version: ${version.version}`;
+    } catch (error) {
+        console.error(error);
+        versionElement.innerText = 'Failed to get Camunda version';
+    }
+}
