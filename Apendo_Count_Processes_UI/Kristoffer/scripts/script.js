@@ -62,7 +62,7 @@ const handleSubmit = async (event) => {
 
     displayLoading();
     await getDateAndTime();
-    await getCamundaVersion();
+    await displayCamundaVersion();
 
     if (processId) {
 
@@ -94,7 +94,7 @@ const printDisplayElements = async (data, count) => {
         '</code></pre>';
 }
 
-const getCamundaVersion = async () => {
+async function getCamundaVersion() {
     const endpoint = new URL(
         `http://localhost:8080/engine-rest/version`
     );
@@ -102,30 +102,16 @@ const getCamundaVersion = async () => {
     const response = await fetch(endpoint);
     const data = await response.json();
 
-    console.log("CAMUNDA VERSION: " + JSON.stringify(data));
     return data;
-
 }
 
-// async function getCamundaVersion() {
-//     const endpoint = new URL(
-//         `http://localhost:8080/engine-rest/version`
-//     );
-//     // endpoint.searchParams.set('token', 'MY_TOKEN_HERE');
-//     const response = await fetch(endpoint);
-//     const data = await response.json();
-//
-//     console.log("CAMUNDA VERSION: " + JSON.stringify(data));
-//     return data;
-// }
-
-// async function displayVersion() {
-//     const versionElement = document.getElementById('version');
-//     try {
-//         const version = await getCamundaVersion();
-//         versionElement.innerText = version.version;
-//     } catch (error) {
-//         console.error(error);
-//         versionElement.innerText = 'Failed to get Camunda version';
-//     }
-// }
+async function displayCamundaVersion() {
+    const versionElement = document.getElementById('version');
+    try {
+        const version = await getCamundaVersion();
+        versionElement.innerText = `Current Camunda version: ${version.version}`;
+    } catch (error) {
+        console.error(error);
+        versionElement.innerText = 'Failed to get Camunda version';
+    }
+}
