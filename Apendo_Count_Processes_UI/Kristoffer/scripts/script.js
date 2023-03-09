@@ -60,7 +60,7 @@ const handleSubmit = async (event) => {
     let data;
     let count = 0;
 
-    showLoading();
+    showLoading('loading');
     await getDateAndTime();
     await displayCamundaVersion();
 
@@ -80,6 +80,7 @@ const handleSubmit = async (event) => {
         count = countResponse.count;
     }
 
+    hideLoading('loading');
     await printDisplayElements(data, count);
 };
 
