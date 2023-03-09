@@ -14,30 +14,30 @@ function submitForm() {
         console.log(id, start, end);
         let payload = {
             "query": {
-                        "bool": {
-                            "must": [
-                                {
-                                    "regexp": {
-                                        "bpmnProcessId": id
-                                    }
-                                },
-                                {
-                                    "wildcard": {
-                                        "_index": "operate-list-view-8.1.0_"
-                                    }
-                                },
-                                {
-                                    "range": {
-                                        "startDate": {
-                                            "gte": startTimestamp,
-                                            "lte": endTimestamp,
-                                            "format": "date_time || date"
-                                        }
-                                    }
-                                }
-                            ]
-                        }
-                    }
+                        "bool": {
+                            "must": [
+                                {
+                                    "regexp": {
+                                        "bpmnProcessId": id
+                                    }
+                                },
+                                {
+                                    "wildcard": {
+                                        "_index": "operate-list-view-8.1.0_"
+                                    }
+                                },
+                                {
+                                    "range": {
+                                        "startDate": {
+                                            "gte": startTimestamp,
+                                            "lte": endTimestamp,
+                                            "format": "date_time || date"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
         };
         return JSON.stringify(payload);
     }

@@ -181,17 +181,25 @@ button:hover {
 
 nav {
   display: flex;
+
   justify-content: space-around;
+
   align-items: center;
+
   min-height: 8vh;
+
   background-color: rgb(124, 202, 202);
+
   font-family: 'Montserrat', sans-serif;
 }
 
 .heading {
   color: white;
+
   text-transform: uppercase;
+
   letter-spacing: 5px;
+
   font-size: 20px;
 }
 
@@ -201,7 +209,6 @@ nav {
   justify-content: space-around;
 
   width: 30%;
-  min-width: fit-content;
 }
 
 .nav-links li {
