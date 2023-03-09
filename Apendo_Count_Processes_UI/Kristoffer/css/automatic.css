@@ -1,0 +1,21 @@
+#foundProcesses {
+    overflow: auto;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 1em;
+    text-align: start;
+    width: 20em;
+}
+
+#foundProcesses:not(:empty) {
+    border: 1px solid #ccc;
+}
+
+#checkboxForm {
+    margin: 0;
+    display: flex;
+}
+#checkboxForm *{
+    margin: 0;
+    padding: 0;
+}
