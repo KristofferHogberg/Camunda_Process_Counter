@@ -1,5 +1,5 @@
-async function getProcessCount(processId) {
-    // processId = document.getElementById('processIdGet').value;
+const getProcessCount = async (processId) => {
+
     let endpoint;
     let body = {};
 
@@ -10,40 +10,35 @@ async function getProcessCount(processId) {
     endpoint = `http://localhost:8080/engine-rest/history/process-instance/count`;
 
     const options = {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: body,
+        method: 'POST', headers: {'Content-Type': 'application/json'}, body: body,
     };
 
     const response = await fetch(endpoint, options);
     const data = await response.json();
 
     return data;
+
 }
 
-async function getProcessById(processId) {
-    const endpoint = new URL(
-        `http://localhost:8080/engine-rest/history/process-instance?processDefinitionKey=${processId}`
-    );
+const getProcessById = async (processId) => {
+    const endpoint = new URL(`http://localhost:8080/engine-rest/history/process-instance?processDefinitionKey=${processId}`);
     // endpoint.searchParams.set('token', 'MY_TOKEN_HERE');
     const response = await fetch(endpoint);
 
     return response.json();
+
 }
 
-async function getAllProcesses() {
-    const endpoint = new URL(
-        `http://localhost:8080/engine-rest/history/process-instance`
-    );
+const getAllProcesses = async () => {
+
+    const endpoint = new URL(`http://localhost:8080/engine-rest/history/process-instance`);
     // endpoint.searchParams.set('token', 'MY_TOKEN_HERE');
     const response = await fetch(endpoint);
     return await response.json();
 }
 
-async function countAllProcesses() {
-    const endpoint = new URL(
-        `http://localhost:8080/engine-rest/history/process-instance/count`
-    );
+const countAllProcesses = async () => {
+    const endpoint = new URL(`http://localhost:8080/engine-rest/history/process-instance/count`);
     // endpoint.searchParams.set('token', 'MY_TOKEN_HERE');
     const response = await fetch(endpoint);
 
@@ -51,7 +46,7 @@ async function countAllProcesses() {
 }
 
 const handleSubmit = async (event) => {
-
+    // await location.reload();
     document.addEventListener('DOMContentLoaded', () => {
     });
     event.preventDefault();
@@ -63,6 +58,9 @@ const handleSubmit = async (event) => {
     displayLoading();
     await getDateAndTime();
     await displayCamundaVersion();
+
+    // const dataDisplayElement = document.getElementById('dataDisplay');
+    // dataDisplayElement.innerHTML = '';
 
     if (processId) {
 
@@ -83,21 +81,14 @@ const handleSubmit = async (event) => {
     await printDisplayElements(data, count);
 };
 
+
 const printDisplayElements = async (data, count) => {
     const dataDisplayElement = document.getElementById('dataDisplay');
-    dataDisplayElement.innerHTML =
-        '<p>Process count: ' +
-        count +
-        '</p>' +
-        '<pre><code class="json">' +
-        JSON.stringify(data, null, 2) +
-        '</code></pre>';
+    dataDisplayElement.innerHTML = '<p>Process count: ' + count + '</p>' + '<pre><code class="json">' + JSON.stringify(data, null, 2) + '</code></pre>';
 }
 
-async function getCamundaVersion() {
-    const endpoint = new URL(
-        `http://localhost:8080/engine-rest/version`
-    );
+const getCamundaVersion = async () => {
+    const endpoint = new URL(`http://localhost:8080/engine-rest/version`);
     // endpoint.searchParams.set('token', 'MY_TOKEN_HERE');
     const response = await fetch(endpoint);
     const data = await response.json();
@@ -105,7 +96,7 @@ async function getCamundaVersion() {
     return data;
 }
 
-async function displayCamundaVersion() {
+const displayCamundaVersion = async () => {
     const versionElement = document.getElementById('version');
     try {
         const version = await getCamundaVersion();
@@ -115,3 +106,6 @@ async function displayCamundaVersion() {
         versionElement.innerText = 'Failed to get Camunda version';
     }
 }
+
+
+
