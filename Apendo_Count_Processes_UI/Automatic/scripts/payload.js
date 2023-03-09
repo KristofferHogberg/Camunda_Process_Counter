@@ -1,13 +1,13 @@
 
 const formatPayload = (processes, beforeDateMillis, afterDateMillis) => {
-
-  return {
+  const processesString = processes.length === 0 ? 'HP_.*' : processes.join('|');
+  return JSON.stringify({
     "query": {
       "bool": {
         "must": [
           {
             "regexp": {
-              "value.bpmnProcessId": processes.length === 0 ? 'HP_.*' : processes.join('|')
+              "value.bpmnProcessId": processesString
             }
           },
           {
@@ -28,13 +28,13 @@ const formatPayload = (processes, beforeDateMillis, afterDateMillis) => {
           {
             "range": {
               "timestamp": {
-                "lte": beforeDateMillis,
-                "gte": afterDateMillis
+                "lte": afterDateMillis,
+                "gte": beforeDateMillis
               }
             }
           }
         ]
       }
     }
-  }
+  });
 }

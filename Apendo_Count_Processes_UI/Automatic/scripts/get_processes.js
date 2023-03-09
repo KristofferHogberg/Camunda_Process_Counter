@@ -1,19 +1,41 @@
 
 const getProcesses = async () => {
-    const response = await fetch("http://192.168.2.196:9200/operate-process-8.1.8_/_search");
+    const response = await fetch("http://wsprakt3.apendo.se:9200/operate-process-8.1.8_/_search");
     const processes = await response.json();
     return processes.hits.hits;
 }
 
 
+const createCheckBoxes = (headProcesses) => {
+    const checkboxDiv = document.getElementById('checkboxForm');
+    for (let i = 0; i < headProcesses.length; i++) {
+        const checkBox = document.createElement("input");
+        checkBox.type = 'checkbox';
+        checkBox.id = 'head-' + i;
+        const label = document.createElement("label");
+        label.htmlFor = 'head-' + i;
+        checkBox.type = "checkbox";
+        checkBox.value = headProcesses[i][0]._source.bpmnProcessId;
+        checkboxDiv.appendChild(checkBox);
+        checkboxDiv.appendChild(label);
+        label.appendChild(document.createTextNode(headProcesses[i][0]._source.bpmnProcessId));
+    }
+};
 window.onload = async () => {
+    const title = document.getElementById('searchTitle');
+    title.innerHTML = 'searching for processes...';
+    showLoading('loadingSearch');
+    // await new Promise(r => setTimeout(r, 2000));
     let processes = await getProcesses();
-    showFoundProcesses(processes);
+    hideLoading('loadingSearch');
+    title.innerHTML = 'Found Processes';
+    const groupedProcesses = groupProcessesByVersion(processes);
+    const headProcesses = popHeadProcesses(groupedProcesses);
+    showFoundProcesses(groupedProcesses, headProcesses);
+    createCheckBoxes(headProcesses);
 }
 
-const showFoundProcesses = (processes) => {
-    let processesByVersion = groupProcessesByVersion(processes);
-    let headProcesses = popHeadProcesses(processesByVersion);
+const showFoundProcesses = (processesByVersion, headProcesses) => {
     const dataDisplayElement = document.getElementById('foundProcesses');
     dataDisplayElement.innerHTML = `<h2>Found Processes</h2>`
     dataDisplayElement.innerHTML +=

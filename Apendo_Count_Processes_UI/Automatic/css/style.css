@@ -237,7 +237,7 @@ nav {
   background-color: #a3f0f0;
 }
 
-#loading {
+#loading, #loadingSearch {
   width: 2rem;
   height: 2rem;
   border: 5px solid #f3f3f3;
@@ -247,7 +247,7 @@ nav {
   visibility: hidden;
   animation: spin 1s infinite linear;
 }
-#loading.display {
+#loading.display, #loadingSearch.display {
   visibility: visible;
 }
 @keyframes spin {

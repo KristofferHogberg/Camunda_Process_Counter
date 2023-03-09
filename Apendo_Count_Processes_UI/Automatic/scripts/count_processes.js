@@ -17,14 +17,16 @@ loginForm.addEventListener("submit", async (e) => {
 
     const before = formatStartDate();
     const after = formatEndDate();
-    console.log(after.valueOf())
-    const processes = document.getElementById("processes");
-    let payload = formatPayload(processes, before, after);
-
-    const response = await fetch('192.168.2.196:9200/_count', {
+    const processes = Array.from(document.querySelectorAll('input[type=checkbox]:checked'))
+        .map(item => item.value);
+    let payload = formatPayload(processes, before.valueOf(), after.valueOf());
+    showLoading('loading');
+    const response = await fetch('http://wsprakt3.apendo.se:9200/_count', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: payload
     });
     const json = await response.json();
+    hideLoading('loading');
+    renderResult(json.valueOf());
 });
